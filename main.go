@@ -14,7 +14,9 @@ func main() {
 	info := informacion.DatosPersonales{}
 
 	var opcion int
-	var monto int
+	var monto, saldo int
+	var movimientosAbono []movimientos.Movimiento
+	var movimientosCargo []movimientos.Movimiento
 
 	for {
 
@@ -30,23 +32,23 @@ func main() {
 		switch opcion {
 
 		case 1:
-
-			fmt.Println("indique el monto")
-			fmt.Scanln(&monto)
-			valor.Cargo(monto)
+			fmt.Println("VA A INTRODUCIR UN INGRESO")
+			monto = movimientos.LeerMonto()
+			movimientosCargo, saldo = valor.Cargo(monto)
 
 		case 2:
-			fmt.Println("indique el monto")
-			fmt.Scanln(&monto)
-			valor.Abono(monto)
+			fmt.Println("VA A INTRODUCIR UN GASTO")
+			monto = movimientos.LeerMonto()
+			movimientosAbono, saldo = valor.Abono(monto)
 
 		case 3:
-			informacion.Imprimir()
+			fmt.Println("OBTENIENDO EXTRACTO")
+			informacion.Imprimir(movimientosCargo, movimientosAbono, saldo, informacion.Clientes)
 
 		case 4:
 
 			fmt.Println("Va a grabar los datos personales")
-			info.GrabarDatosPersonales()
+			informacion.Clientes = info.GrabarDatosPersonales()
 
 		case 5:
 			return

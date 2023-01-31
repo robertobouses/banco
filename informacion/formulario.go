@@ -10,7 +10,7 @@ type DatosPersonales struct {
 
 var Clientes []DatosPersonales
 
-func (d *DatosPersonales) GrabarDatosPersonales() {
+func (d *DatosPersonales) GrabarDatosPersonales() []DatosPersonales {
 	fmt.Println("Introduce los datos del Cliente, DNI, NOMBRE, APELLIDO")
 	fmt.Scanln(&d.dni)
 	fmt.Scanln(&d.nombre)
@@ -23,4 +23,5 @@ func (d *DatosPersonales) GrabarDatosPersonales() {
 
 	Clientes = append(Clientes, Cliente1)
 	fmt.Println("Clientes", Clientes)
+	return Clientes
 }

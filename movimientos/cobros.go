@@ -1,6 +1,10 @@
 package movimientos
 
-import "github.com/robertobouses/banco/informacion"
+import (
+	"fmt"
+
+	"github.com/robertobouses/banco/informacion"
+)
 
 type CuentaBancaria struct {
 	id        int
@@ -22,7 +26,10 @@ type DatosPersonales struct {
 	apellido string
 }*/
 
-func (c *CuentaBancaria) Cargo(monto int) {
+func (c *CuentaBancaria) Cargo(monto int) ([]Movimiento, int) {
 	c.saldo += monto
-
+	c.gestiones = append(c.gestiones, Movimiento{tipo: "CARGO", importe: monto, saldo: c.saldo})
+	fmt.Println("El movimiento es del tipo CARGO por un importe de:", monto)
+	fmt.Println("El saldo de la cuenta es:", c.saldo)
+	return c.gestiones, c.saldo
 }
