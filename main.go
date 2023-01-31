@@ -9,5 +9,7 @@ import (
 func main() {
 
 	movimientos.Cargo()
+	movimientos.Abono()
 	informacion.GrabarDatosPersonales()
+
 }
