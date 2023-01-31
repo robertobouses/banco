@@ -22,4 +22,5 @@ func (d *DatosPersonales) GrabarDatosPersonales() {
 	}
 
 	Clientes = append(Clientes, Cliente1)
+	fmt.Println("Clientes", Clientes)
 }
